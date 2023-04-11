@@ -4,7 +4,7 @@ VBR="200k" #video bitrate
 FPS="24" #fps of the stream (increase it if you stream videos)
 QUAL="ultrafast" #quality of the stream
 RTMP_URL="rtmp://x.rtmp.youtube.com/live2" #YouTube or Twitch's RTMP URL you can find on streaming settings
-STREAM_KEY="" #insert here your streaming key
+STREAM_KEY="cbyx-vwds-tssm-zzds-8vqp" #insert here your streaming key
 VIDEO_SOURCE="background.png" #default background you can see in the main path
 AUDIO_ENCODER="aac" #audio encoder :)
 
