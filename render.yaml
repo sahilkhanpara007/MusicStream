@@ -1,0 +1,3 @@
+name: my-bash-service
+type: web
+startCommand: bash start.sh
