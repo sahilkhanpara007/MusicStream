@@ -1,6 +1,6 @@
 #! /bin/bash
 
-VBR="1500k" #video bitrate
+VBR="200k" #video bitrate
 FPS="24" #fps of the stream (increase it if you stream videos)
 QUAL="ultrafast" #quality of the stream
 RTMP_URL="rtmp://x.rtmp.youtube.com/live2" #YouTube or Twitch's RTMP URL you can find on streaming settings
