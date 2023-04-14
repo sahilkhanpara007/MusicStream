@@ -17,4 +17,15 @@ done
 cd ..
 echo "Starting the streaming..."
 
- ffmpeg -stream_loop -1 -re -i video.mp4 -stream_loop -1 -f concat -safe 0 -i <((for f in ./mp3/*.mp3; do path="$PWD/$f"; echo "file ${path@Q}"; done) | shuf) -vcodec libx264 -pix_fmt yuvj420p -maxrate 750k -preset veryfast -r 12 -framerate 30 -g 50 -c:a aac -b:a 128k -ar 44100 -strict experimental -video_track_timescale 1000 -b:v 150000k -f flv  rtmp://a.rtmp.youtube.com/live2/cbyx-vwds-tssm-zzds-8vqp
+ffmpeg \ -loop 1 \ -re \
+ -framerate $FPS \
+ -stream_loop -1 -re -i video.mp4 \
+ -thread_queue_size 512 \
+ -f concat \
+ -safe 0 \
+ -i list.txt \
+ -loop -1 \
+ -c:v libx264 -tune stillimage -pix_fmt yuv420p -preset $QUAL -r $FPS -g $(($FPS *2)) -b:v $VBR \
+ -c:a $AUDIO_ENCODER -threads $(nproc) -ar 44100 -b:a 192k -bufsize 512k -pix_fmt yuv420p \
+ -f flv $RTMP_URL/$STREAM_KEY
+ 
